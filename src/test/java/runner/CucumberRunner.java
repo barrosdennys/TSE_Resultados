@@ -21,7 +21,7 @@ import util.DriverManager;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
 
         // Plugins
-        plugin = {"pretty", "html:target/cucumber-html-report"}
+        plugin = {"pretty", "html:target/cucumber-html-report.html"}
 )
 class CucumberRunner {
 
