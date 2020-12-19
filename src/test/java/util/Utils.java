@@ -11,31 +11,38 @@ public class Utils {
     private final AppiumDriver<MobileElement> driver;
     private final WebDriverWait wait;
 
-    public Utils(AppiumDriver<MobileElement> driver){
+    public Utils(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
         this.wait = DriverManager.getWait();
     }
 
-    public void waitAndClick(By element) {
+    public void waitUntilElementWithPartialTextIsDisplayed(String text) {
+        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        driver.findElement(element).click();
     }
 
-    public void waitAndClickByTextContains(String text) {
-        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\""+text+"\")");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        driver.findElement(element).click();
-    }
-
-    public MobileElement getElementByPartialText(String text) {
-        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\""+text+"\")");
+    public MobileElement getElementByResourceId(String resourceId) {
+        By element = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         return driver.findElement(element);
     }
 
-    public void scrollUntilTheEnd(){
+    public MobileElement getButtonWithPartialText(String text) {
+        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")" +
+                ".className(\"android.widget.Button\")");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        return driver.findElement(element);
+    }
+
+    public MobileElement getElementByPartialText(String text) {
+        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        return driver.findElement(element);
+    }
+
+    public void scrollUntilTheEnd() {
         int maxTries = 10;
         driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
-                "(new UiSelector().scrollable(true)).flingToEnd("+maxTries+")"));
+                "(new UiSelector().scrollable(true)).flingToEnd(" + maxTries + ")"));
     }
 }
