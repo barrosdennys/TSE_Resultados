@@ -3,7 +3,6 @@ package runner;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import util.DriverManager;
 
@@ -27,7 +26,7 @@ import util.DriverManager;
 class CucumberRunner {
 
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown() {
         DriverManager.closeDriver();
     }
 }

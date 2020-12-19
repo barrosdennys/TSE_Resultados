@@ -24,7 +24,7 @@ public class DriverManager {
             desiredCapabilities.setCapability(MobileCapabilityType.APP, Constants.APK_PATH);
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, "true");
 
-            try{
+            try {
                 driver = new AndroidDriver<>(new URL(Constants.APPIUM_URL_SERVER), desiredCapabilities);
             } catch (MalformedURLException exception) {
                 exception.printStackTrace();
@@ -34,7 +34,7 @@ public class DriverManager {
         return driver;
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         driver.quit();
     }
 
