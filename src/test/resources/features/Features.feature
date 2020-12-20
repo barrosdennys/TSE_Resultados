@@ -1,4 +1,3 @@
-
 Feature: TSE Resultados
 
   @skipMenu
@@ -26,5 +25,5 @@ Feature: TSE Resultados
   Scenario: Access "FAQ" screen
     Given I select the tab Informações
     And I click on "Dúvidas Frequentes" option
-    Then I should see "O que posso fazer no app?" message
+    Then I should see the message "O que posso fazer no app?"
 

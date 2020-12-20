@@ -22,6 +22,7 @@ public class DriverManager {
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 2 API 28");
             desiredCapabilities.setCapability(MobileCapabilityType.VERSION, "9.0");
             desiredCapabilities.setCapability(MobileCapabilityType.APP, Constants.APK_PATH);
+            //User to auto grant permissions to the apk
             desiredCapabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, "true");
 
             try {

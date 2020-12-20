@@ -12,7 +12,7 @@ public class ResultsSteps {
 
     @Then("I should check that {string} is in the list of Vereadores voted")
     public void checkVereadoresList(String vereadorName) {
-        util.scrollUntilText(vereadorName);
+        util.scrollForwardUntilText(vereadorName);
         assert util.getElementByPartialText(vereadorName).isDisplayed();
         util.clickOnBackButton();
     }

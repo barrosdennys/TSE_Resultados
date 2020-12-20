@@ -15,11 +15,6 @@ public class MainPageSteps {
     private final MainPage mainPage = new MainPage(driver);
     private final Utils util = new Utils(driver);
 
-    @Given("I click on {string}")
-    public void selectOptionInMainPage(String option) {
-        mainPage.clickOnMenuOption(option);
-    }
-
     @When("I select the first leg of the election")
     public void selectFirstLeg() {
         mainPage.selectFirstLeg();
@@ -41,7 +36,7 @@ public class MainPageSteps {
     }
 
     @Given("I am on the tab Resultados")
-    public void clickOnResultadosTab() throws InterruptedException {
+    public void clickOnResultadosTab() {
         mainPage.selectResultadosTab();
     }
 }

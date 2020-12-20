@@ -19,10 +19,9 @@ public class SelectStatePage {
     }
 
     public void selectCity(String city) {
-        util.getElementByPartialText("Selecione o município").click();
+        util.getElementByPartialText("Selecione o municÃ­pio").click();
         util.getElementByPartialText(city).click();
         util.getButtonWithPartialText("Confirmar").click();
         util.getButtonWithPartialText("Confirmar").click();
-
     }
 }

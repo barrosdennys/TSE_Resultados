@@ -17,6 +17,7 @@ public class ElectionFilterSteps {
     private final AppiumDriver<MobileElement> driver = DriverManager.getDriver();
     private final Utils util = new Utils(driver);
     private final ElectionFilterPage electionFilterPage = new ElectionFilterPage(driver);
+    private final MainPage mainPage = new MainPage(driver);
 
     @And("I select {string} in UF option")
     public void selectUFOption(String ufList) {
@@ -29,14 +30,13 @@ public class ElectionFilterSteps {
     }
 
     @And("I click {string} button")
-    public void clickOnFirstLeg(String firstLeg) throws InterruptedException {
+    public void clickOnFirstLeg(String firstLeg) {
         electionFilterPage.selectFirstLeg(firstLeg);
     }
 
     @Given("I select {string} candidate")
-    public void selectCandidate(String string) throws InterruptedException {
+    public void selectCandidate(String string) {
         util.scrollUntilTheTop();
-        Thread.sleep(3000);
         electionFilterPage.selectFirstCandidate(string);
     }
 
@@ -47,15 +47,12 @@ public class ElectionFilterSteps {
 
     @When("I select the favorite page")
     public void selectFavoriteTab() {
-        electionFilterPage.selectFavoritoTab();
+        mainPage.selectFavoritoTab();
     }
 
     @Then("I should see {string} candidate")
-    public void validateCandidateIsDisplayed(String name) throws InterruptedException {
-        Thread.sleep(2000);
+    public void validateCandidateIsDisplayed(String name) {
         assert util.getElementByPartialText(name).isDisplayed();
     }
-
-
 
 }

@@ -16,17 +16,33 @@ public class Utils {
         this.wait = DriverManager.getWait();
     }
 
+    /**
+     * Waits for a element with a given text to be displayed
+     *
+     * @param text text of the element to be displayed
+     */
     public void waitUntilElementWithPartialTextIsDisplayed(String text) {
         By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
+    /**
+     * Returns the element by a given resourceId
+     *
+     * @param resourceId resourceId of the element
+     */
     public MobileElement getElementByResourceId(String resourceId) {
         By element = MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         return driver.findElement(element);
     }
 
+    /**
+     * Returns the element with the class Android.widget.Button
+     * but with a given text present in the button
+     *
+     * @param text text of the button element
+     */
     public MobileElement getButtonWithPartialText(String text) {
         By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")" +
                 ".className(\"android.widget.Button\")");
@@ -34,39 +50,72 @@ public class Utils {
         return driver.findElement(element);
     }
 
+    /**
+     * Returns the element with a given text
+     *
+     * @param text text of the element
+     */
     public MobileElement getElementByPartialText(String text) {
         By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         return driver.findElement(element);
     }
 
+    /**
+     * scrolls until the end of the screen with maxTries of 20
+     */
     public void scrollUntilTheEnd() {
         int maxTries = 20;
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
-                "(new UiSelector().scrollable(true)).flingToEnd(" + maxTries + ")"));
+        By scrollElement = MobileBy.AndroidUIAutomator("new UiScrollable" +
+                "(new UiSelector().scrollable(true)).flingToEnd(" + maxTries + ")");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrollElement));
+        driver.findElement(scrollElement);
     }
 
+    /**
+     * scrolls until the top of the screen with maxTries of 20
+     */
     public void scrollUntilTheTop() {
-        int maxTries = 5;
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
-                "(new UiSelector().scrollable(true)).flingToBeginning(" + maxTries + ")"));
+        int maxTries = 20;
+        By scrollElement = MobileBy.AndroidUIAutomator("new UiScrollable" +
+                "(new UiSelector().scrollable(true)).flingToBeginning(" + maxTries + ")");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrollElement));
+        driver.findElement(scrollElement);
     }
 
+    /**
+     * Checks if a element is present on the screen. Returns true if exists. false if not.
+     *
+     * @param text text of the element to be checked
+     */
     public boolean isElementPresent(String text) {
         By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
         return driver.findElements(element).size() != 0;
     }
 
-    public void scrollUntilText(String text) {
-        while (!isElementPresent(text)){
-            By element = MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()");
-            wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-            driver.findElement(element);
-        }
+    /**
+     * scrolls forward once
+     */
+    public void scrollForward() {
+        By element = MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        driver.findElement(element);
     }
 
-    public void clickOnBackButton(){
+    /**
+     * Scrolls forward until find an element with a given text
+     *
+     * @param text text of the element to be checked
+     */
+    public void scrollForwardUntilText(String text) {
+        while (!isElementPresent(text)) {
+            scrollForward();
+        }
+        scrollForward();
+    }
+
+    public void clickOnBackButton() {
         String backButton = "back";
         getButtonWithPartialText(backButton).click();
     }

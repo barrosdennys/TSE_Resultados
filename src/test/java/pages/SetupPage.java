@@ -2,7 +2,6 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import util.DriverManager;
 import util.Utils;
 
 public class SetupPage {
@@ -13,7 +12,7 @@ public class SetupPage {
     }
 
     public void completeSetup() {
-        util.getButtonWithPartialText("Próximo").click();
+        util.getButtonWithPartialText("PrÃ³ximo").click();
         util.getButtonWithPartialText("Entendi").click();
         util.waitUntilElementWithPartialTextIsDisplayed("Termos de uso");
         util.scrollUntilTheEnd();
