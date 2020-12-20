@@ -13,7 +13,7 @@ public class SetupPage {
     }
 
     public void completeSetup() {
-        util.getButtonWithPartialText("PrÃ³ximo").click();
+        util.getButtonWithPartialText("Próximo").click();
         util.getButtonWithPartialText("Entendi").click();
         util.waitUntilElementWithPartialTextIsDisplayed("Termos de uso");
         util.scrollUntilTheEnd();

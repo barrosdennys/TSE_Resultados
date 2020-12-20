@@ -52,11 +52,22 @@ public class Utils {
                 "(new UiSelector().scrollable(true)).flingToBeginning(" + maxTries + ")"));
     }
 
+    public boolean isElementPresent(String text) {
+        By element = MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")");
+        return driver.findElements(element).size() != 0;
+    }
+
     public void scrollUntilText(String text) {
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
-                "(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\""+text+"\").className(\"android.view.View\"))"));
-
+        while (!isElementPresent(text)){
+            By element = MobileBy.AndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+            driver.findElement(element);
         }
+    }
 
-
+    public void clickOnBackButton(){
+        String backButton = "back";
+        getButtonWithPartialText(backButton).click();
+    }
 }
