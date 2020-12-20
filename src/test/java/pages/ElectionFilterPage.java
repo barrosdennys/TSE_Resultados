@@ -14,15 +14,7 @@ public class ElectionFilterPage {
         this.util = new Utils(driver);
     }
 
-
-    public void selectElectionFilter(String election){
-
-        util.getButtonWithPartialText(election).click();
-        util.scrollUntilTheTop();
-    }
-
     public void clickOnUFList(String ufList){
-        DriverManager.getWait();
         util.scrollUntilTheTop();
         util.getElementByPartialText(ufList).click();
     }
@@ -34,7 +26,6 @@ public class ElectionFilterPage {
 
     public void selectFirstLeg(String firstLeg) throws InterruptedException {
         util.getButtonWithPartialText(firstLeg).click();
-        DriverManager.getWait();
         Thread.sleep(5000);
     }
 

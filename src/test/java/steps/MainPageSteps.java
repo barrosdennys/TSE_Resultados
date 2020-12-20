@@ -2,6 +2,7 @@ package steps;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,5 +28,20 @@ public class MainPageSteps {
     @Then("I should see the message {string}")
     public void validateMessage(String message) {
         assert util.getElementByPartialText(message).isDisplayed();
+    }
+
+    @And("I select {string} button")
+    public void selectVereadorButton(String vereador) {
+        mainPage.selectVereador(vereador);
+    }
+
+    @And("I select {string}")
+    public void selectElectionButton(String electionButton) {
+        mainPage.selectElectionFilter(electionButton);
+    }
+
+    @Given("I am on the tab Resultados")
+    public void clickOnResultadosTab() throws InterruptedException {
+        mainPage.selectResultadosTab();
     }
 }
