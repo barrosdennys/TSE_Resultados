@@ -19,12 +19,16 @@ Este projeto tem como objetivo automatizar alguns fluxos do aplicativo "Resultad
 TSE_Resultados/
     java/
         pages/
+            ElectionFilterPage.java
+            FAQPage.java
             MainPage.java
             SelectStatePage.java
             SetupPage.java
         runner/
             CucumberRunner.java
         steps/
+            ElectionFilterSteps
+            FAQSteps.java
             Hooks.java
             MainPageSteps.java
             SelectStateSteps.java
@@ -62,3 +66,6 @@ ___
 ### **Report**
 
 Após a geração dos testes, um arquivo .html será gerado na pasta /target com o nome cucumber-html-report.html. 
+
+### **Video de uma execução**
+https://drive.google.com/file/d/1B5CeIy1E4mS-qz1xGPQrE_dSy0PsPHEu/view?usp=sharing
