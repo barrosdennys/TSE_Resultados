@@ -41,8 +41,22 @@ public class Utils {
     }
 
     public void scrollUntilTheEnd() {
-        int maxTries = 10;
+        int maxTries = 20;
         driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
                 "(new UiSelector().scrollable(true)).flingToEnd(" + maxTries + ")"));
     }
+
+    public void scrollUntilTheTop() {
+        int maxTries = 5;
+        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
+                "(new UiSelector().scrollable(true)).flingToBeginning(" + maxTries + ")"));
+    }
+
+    public void scrollUntilText(String text) {
+        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable" +
+                "(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\""+text+"\").className(\"android.view.View\"))"));
+
+        }
+
+
 }
