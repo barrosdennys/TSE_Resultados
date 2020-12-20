@@ -41,17 +41,6 @@ public class ElectionFilterSteps {
         electionFilterPage.selectFirstLeg(firstLeg);
     }
 
-    @And("I select {string} button")
-    public void iSelectButton(String vereador) {
-        electionFilterPage.selectVereador(vereador);
-    }
-
-    @Then("I should check that {string} is the most voted Vereador in Macapa")
-    public void MostVotedVereadorInMacapa(String string) {
-        electionFilterPage.verifyMostVoted(string);
-    }
-
-
     @And("I select {string} candidate")
     public void iSelectCandidate(String string) {
         electionFilterPage.selectFirstCandidate(string);

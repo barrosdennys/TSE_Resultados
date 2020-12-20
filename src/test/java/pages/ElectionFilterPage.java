@@ -38,18 +38,6 @@ public class ElectionFilterPage {
         Thread.sleep(5000);
     }
 
-    public void selectVereador(String vereador){
-        DriverManager.getWait();
-        util.scrollUntilTheEnd();
-        DriverManager.getWait();
-        util.getButtonWithPartialText(vereador).click();
-    }
-
-    public void verifyMostVoted(String text){
-        DriverManager.getWait();
-        util.scrollUntilText(text);
-    }
-
     public void selectFirstCandidate(String text){
         util.getButtonWithPartialText(text).click();
     }
