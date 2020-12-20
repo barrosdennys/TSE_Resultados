@@ -2,7 +2,11 @@ package steps;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import pages.SetupPage;
 import util.DriverManager;
 
@@ -15,4 +19,6 @@ public class Hooks {
     public void completeMenu() {
         setupPage.completeSetup();
     }
+
+
 }
