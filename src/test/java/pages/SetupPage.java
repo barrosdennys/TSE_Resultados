@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import util.DriverManager;
 import util.Utils;
 
 public class SetupPage {

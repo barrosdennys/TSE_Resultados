@@ -1,5 +1,6 @@
 package runner;
 
+import io.cucumber.java.After;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -25,8 +26,7 @@ import util.DriverManager;
 )
 class CucumberRunner {
 
-    @AfterClass
     public static void tearDown() {
-        DriverManager.closeDriver();
-    }
+        DriverManager.closeDriver();}
+
 }
